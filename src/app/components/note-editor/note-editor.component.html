@@ -1,0 +1,33 @@
+<mat-card fxLayout="column" fxLayoutGap="10px">
+  <mat-card-title>Note Editor</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="noteForm" (ngSubmit)="saveNote()" fxLayout="column" fxLayoutGap="10px">
+      <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="title"
+          [class.invalid]="title?.invalid && title?.touched"
+        />
+        <mat-error *ngIf="title?.errors?.['required']">Title is required.</mat-error>
+        <mat-error *ngIf="title?.errors?.['maxlength']">Title is too long.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Content</mat-label>
+        <textarea
+          matInput
+          formControlName="content"
+          [class.invalid]="content?.invalid && content?.touched"
+        ></textarea>
+        <mat-error *ngIf="content?.errors?.['required']">Content is required.</mat-error>
+      </mat-form-field>
+
+      <div fxLayout="row" fxLayoutGap="10px">
+        <button mat-raised-button color="primary" type="submit" [disabled]="noteForm.invalid">Save</button>
+        <button mat-button [routerLink]="['/']">Cancel</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

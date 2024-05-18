@@ -1,0 +1,10 @@
+<div class="profile-container">
+    <h2>Profile</h2>
+    <div *ngIf="user?.email">
+      <p [ngStyle]="{ 'color': 'blue' }">Email: {{ user?.email ?? '' }}</p>
+      <p>Register date: {{ date }}</p>
+
+    </div>
+    <button mat-stroked-button (click)="logout()">Logout</button>
+  </div>
+  

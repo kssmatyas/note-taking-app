@@ -1,0 +1,25 @@
+<div class="login-container">
+  <form [formGroup]="form" #loginForm="ngForm">
+    <div>
+      <label for="email">Email:</label>
+      <input formControlName="email" type="email" id="email" [(ngModel)]="email" name="email" required>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input formControlName="password" type="password" id="password" [(ngModel)]="password" name="password" required>
+    </div>
+    
+
+    <div>
+      <button [ngClass]="{ 'disabled': isDisabled }" (click)="login()">Login</button>
+      <mat-divider></mat-divider>
+      <button [ngClass]="{ 'disabled': isDisabled }" (click)="register()">Register</button>  
+    </div>
+
+
+    <small class="invalid-field" *ngIf="isDisabled">
+      The email and password field is required!
+    </small>
+
+  </form>
+</div>

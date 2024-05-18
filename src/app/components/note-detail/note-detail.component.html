@@ -1,0 +1,13 @@
+<mat-card *ngIf="note" fxLayout="column" fxLayoutGap="10px">
+    <mat-card-header>
+        <mat-card-title>{{ note.title }}</mat-card-title>
+        <mat-card-subtitle>{{ note.createdAt | date }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p>{{ note.content }}</p>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutGap="10px">
+        <button mat-raised-button color="primary" [routerLink]="['/edit', note.id]">Edit</button>
+        <button mat-raised-button color="warn" (click)="deleteNote()">Delete</button>
+    </mat-card-actions>
+</mat-card>

@@ -1,0 +1,25 @@
+<mat-card>
+  <mat-card-title>Note List</mat-card-title>
+  <mat-card-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Search Notes</mat-label>
+      <input matInput (input)="onInput($event)">
+    </mat-form-field>
+    <mat-list>
+      <mat-list-item *ngFor="let note of notes" fxLayout="column" fxLayoutGap="5px">
+        <div fxLayout="row" fxLayoutGap="10px">
+          <span mat-line>
+            <a [routerLink]="['/note', note.id]" matTooltip="{{ note.title }}">{{ note.title }}</a>
+          </span>
+          <span mat-line>{{ note.content | slice:0:50 }}...</span>
+          <button mat-icon-button [routerLink]="['/edit', note.id]">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="openDeleteDialog(note)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

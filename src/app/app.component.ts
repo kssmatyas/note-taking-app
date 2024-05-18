@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'note-taking-app';
+
+
+
+  get isLoggedIn() {
+    const email = JSON.parse(localStorage.getItem('email') as string);
+
+    return !(email == null || email === '')
+  }
 }
